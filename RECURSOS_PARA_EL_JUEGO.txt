@@ -1,0 +1,47 @@
+CONCEPTOS CLAVE: 2D, sprites, tiles/tilesets/tilemaps, backgrounds, user interfaces
+
+>>>>>>>>>> HERRAMIENTAS
+
+Para manejar sprites: 
+
+https://www.piskelapp.com/
+
+Para manejar tiles, tilesets, tilemaps: 
+
+https://www.mapeditor.org/
+
+>>>>>>>>>> GAME ASSETS
+
+Algunas, la mayoría, tienen cosas gratis y cosas de pago. Cuando hay enlace a gratuitos, ese es el que os estamos facilitando:
+
+https://kenney.nl/assets
+https://craftpix.net/freebies/
+https://mobilegamegraphics.com/product-category/all_products/freestuff/
+https://www.creativegameassets.com/free-assets
+https://www.gameart2d.com/freebies.html
+https://gameartpartners.com/downloads/totally-free-goodies/
+https://graphicriver.net/game-assets [TOTALMENTE DE PAGO]
+https://itch.io/game-assets/free
+https://www.gamedevmarket.net/category/2d/?type=free
+https://www.scirra.com/store
+https://www.spriters-resource.com/
+http://opengameart.org/
+
+>>>>>>>>>> SONIDOS Y MÚSICA
+
+http://www.noiseforfun.com/
+https://www.playonloop.com/
+https://www.soundjay.com/
+https://freesound.org/
+http://www.soundgator.com/
+https://www.pacdv.com/sounds/index.html
+https://www.freesfx.co.uk/
+http://dig.ccmixter.org/
+https://www.bensound.com/
+https://musopen.org/
+
+>>>>>>>>>> IMÁGENES VECTORIALES
+
+https://www.freepik.com/
+vecteezy.com/
+https://www.flaticon.es/
