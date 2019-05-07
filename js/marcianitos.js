@@ -3,26 +3,41 @@ class Aliens {
     this.ctx = ctx;
     this.canvasW = canvasW;
     this.canvasH = canvasH;
-
     this.img = new Image();
     this.img.src = url;
 
-    this.random = Math.floor(Math.random() * (this.canvasW - this.width));
+    /*
+     */
+    //this.random = Math.floor(Math.random() * (this.canvasW - this.width));
 
     this.width = 60;
     this.height = 60;
 
-    this.x = 0;
+    this.x = Math.floor(Math.random() * this.canvasW - this.width);
     this.y = 0 - this.height;
 
-    this.velY = 3;
-    this.velX = 2;
+    this.velArray = [2, -2];
 
-    this.gravity = 0.05;
+    this.velY = this.velArray[Math.floor(Math.random() * 2)];
+    this.velX = 1;
+    this.gravity = 0.02;
+
+    this.bullet = [];
   }
 
   draw() {
     this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    /*     console.log(
+      this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
+    );
+ */
+  }
+
+  circularMove() {
+    this.y += 5;
+    this.x += 4;
+    this.y -= 5;
+    this.x -= 4;
   }
 
   move() {
@@ -30,8 +45,8 @@ class Aliens {
     this.x += this.velX;
     this.velY += this.gravity;
 
-    if (this.x <= 0 || this.y > this.canvasH - this.height) this.changeY();
-    if (this.x <= 0 || this.x > this.canvasW - this.width) this.changeX();
+    if (this.x <= this.width || this.x > this.canvasW - this.width)
+      this.changeX();
   }
 
   changeX() {

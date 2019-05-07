@@ -1,4 +1,4 @@
-class Players {
+class Player {
   constructor(ctx, canvasW, canvasH, url, keys) {
     this.ctx = ctx;
     this.canvasW = canvasW;
@@ -17,19 +17,35 @@ class Players {
     this.img = new Image();
     this.img.src = url;
 
+    this.bullets = [];
+
     this.setListeners();
   }
 
   draw() {
     this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+
+    this.bullets = this.bullets.filter(bullet => {
+      return bullet.y > 0;
+    });
+
+    this.bullets.forEach(bullet => {
+      bullet.draw();
+      bullet.move();
+    });
+    console.log(this.bullets);
   }
 
   setListeners() {
     document.onkeydown = event => {
       if (event.keyCode === this.keys.LEFT_KEY) this.moveLeft();
       else if (event.keyCode === this.keys.RIGHT_KEY) this.moveRight();
-      //if (event.keyCode === this.keys.SHOOT_KEY)
+      else if (event.keyCode === this.keys.SHOOT_KEY) this.shoot();
     };
+  }
+
+  shoot() {
+    this.bullets.push(new Bullet(this.ctx, this.x, this.y));
   }
 
   moveLeft() {

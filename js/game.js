@@ -16,7 +16,15 @@ const myGame = {
     SHOOT_KEY: 38
   },
   imgPlayer1: "imagenes/cohete naranja-blanco-recto.svg",
-  imgAlien: "imagenes/alien (1).svg",
+
+  imgAliens: [
+    "imagenes/alien(1).svg",
+    "imagenes/alien.svg",
+    "imagenes/marciano-azul.svg",
+    "imagenes/marciano-rosa.svg",
+    "imagenes/008-alien.svg",
+    "imagenes/009-alien-1.svg"
+  ],
 
   init: function(id) {
     this.canvasDom = document.getElementById(id);
@@ -40,41 +48,103 @@ const myGame = {
       this.clear();
       this.moveAll();
       this.drawAll();
+
+      this.framesCounter++;
+
+      if (this.framesCounter > 1000) {
+        this.framesCounter = 0;
+      }
+
+      if (this.framesCounter % 80 == 0) {
+        this.generateAlien();
+      }
+
+      this.clearAlien();
+
+      this.isCollisionBullet();
+      if (this.isCollisionRocket()) this.gameOver();
     }, 1000 / this.fps);
   },
+
+  stop: function() {
+    clearInterval(this.interval);
+  },
+
+  gameOver: function() {
+    this.stop();
+
+    if (confirm("GAME OVER")) {
+      this.resetGame();
+      this.startGame();
+    }
+  },
+
   clear: function() {
     this.ctx.clearRect(0, 0, this.canvasW, this.canvasH);
   },
 
   resetGame: function() {
+    this.framesCounter = 0;
     this.background = new Background(this.ctx, this.canvasW, this.canvasH);
-    this.player = new Players(
+    this.player = new Player(
       this.ctx,
       this.canvasW,
       this.canvasH,
       this.imgPlayer1,
       this.keys
     );
-    this.alien = new Aliens(
-      this.ctx,
-      this.canvasW,
-      this.canvasH,
-      this.imgAlien
-    );
-    console.log(this.player);
-    console.log(this.alien);
+
+    this.aliens = [
+      new Aliens(this.ctx, this.canvasW, this.canvasH, this.getRandomAlien())
+    ];
   },
 
   drawAll: function() {
     this.background.draw();
     this.player.draw();
-    this.alien.draw();
+    this.aliens.forEach(alien => alien.draw());
   },
 
   moveAll: function() {
     this.background.move();
-    this.alien.move();
-    // this.player.moveLeft();
-    // this.player.moveRight();
+    this.aliens.forEach(alien => alien.move());
+    /*     this.aliens.forEach(alien => alien.circularMove());
+     */
+  },
+
+  getRandomAlien: function() {
+    return this.imgAliens[Math.floor(Math.random() * this.imgAliens.length)];
+  },
+
+  generateAlien: function() {
+    this.aliens.push(
+      new Aliens(this.ctx, this.canvasW, this.canvasH, this.getRandomAlien())
+    );
+  },
+
+  clearAlien: function() {
+    this.aliens = this.aliens.filter(alien => {
+      return alien.y <= this.canvasH;
+    });
+  },
+
+  isCollisionBullet: function() {
+    return this.aliens.some((alien, idx) => {
+      return this.player.bullets.some((bullet, index) => {
+        if (
+          bullet.x + bullet.r >= alien.x &&
+          bullet.x < alien.x + alien.width &&
+          bullet.y <= alien.y + alien.height
+        ) {
+          this.aliens.splice(idx, 1);
+          this.player.bullets.splice(index, 1);
+        }
+      });
+    });
+  },
+  isCollisionRocket: function() {
+    return this.aliens.some(alien => {
+      return alien.y + alien.height >= this.player.y;
+    });
   }
 };
