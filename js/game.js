@@ -16,7 +16,7 @@ const myGame = {
     SHOOT_KEY: 38
   },
   imgPlayer1: "imagenes/cohete naranja-blanco-recto.svg",
-  imgAlien: "imagenes/alien(1).svg",
+  imgAlien: "imagenes/alien (1).svg",
 
   init: function(id) {
     this.canvasDom = document.getElementById(id);
@@ -73,6 +73,7 @@ const myGame = {
 
   moveAll: function() {
     this.background.move();
+    this.alien.move();
     // this.player.moveLeft();
     // this.player.moveRight();
   }

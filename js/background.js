@@ -9,7 +9,7 @@ class Background {
     this.x = 0;
     this.y = 0;
 
-    this.velY = 4;
+    this.velY = 3;
   }
 
   draw() {
