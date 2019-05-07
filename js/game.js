@@ -25,6 +25,7 @@ const myGame = {
     "imagenes/008-alien.svg",
     "imagenes/009-alien-1.svg"
   ],
+  counter: 0,
 
   init: function(id) {
     this.canvasDom = document.getElementById(id);
@@ -61,7 +62,8 @@ const myGame = {
 
       this.clearAlien();
 
-      this.isCollisionBullet();
+      if (this.isCollisionBullet()) counter++;
+
       if (this.isCollisionRocket()) this.gameOver();
     }, 1000 / this.fps);
   },
@@ -97,12 +99,15 @@ const myGame = {
     this.aliens = [
       new Aliens(this.ctx, this.canvasW, this.canvasH, this.getRandomAlien())
     ];
+
+    this.score = new Score(this.ctx, this.counter, this.canvasW, this.canvasH);
   },
 
   drawAll: function() {
     this.background.draw();
     this.player.draw();
     this.aliens.forEach(alien => alien.draw());
+    this.score.update();
   },
 
   moveAll: function() {
@@ -144,7 +149,11 @@ const myGame = {
   },
   isCollisionRocket: function() {
     return this.aliens.some(alien => {
-      return alien.y + alien.height >= this.player.y;
+      return (
+        alien.y + alien.height >= this.player.y &&
+        alien.x + alien.width >= this.player.x &&
+        alien.x <= this.player.x + this.player.width
+      );
     });
   }
 };
