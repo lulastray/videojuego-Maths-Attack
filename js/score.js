@@ -1,14 +1,14 @@
 class Score {
   constructor(ctx, counter, canvasW, canvasH) {
     this.ctx = ctx;
-    this.font = "30px Moonhouse";
     this.counter = counter;
     this.canvasW = canvasW;
     this.canvasH = canvasH;
   }
 
-  update() {
+  draw() {
+    this.ctx.font = "30px sans-serif";
     this.ctx.fillStyle = "white";
-    this.ctx.fillText(this.counter, this.canvasW / 2, 0);
+    this.ctx.fillText(this.counter, 200, 50);
   }
 }

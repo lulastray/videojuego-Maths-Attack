@@ -33,7 +33,6 @@ class Player {
       bullet.draw();
       bullet.move();
     });
-    console.log(this.bullets);
   }
 
   setListeners() {

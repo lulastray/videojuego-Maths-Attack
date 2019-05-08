@@ -62,7 +62,7 @@ const myGame = {
 
       this.clearAlien();
 
-      if (this.isCollisionBullet()) counter++;
+      if (this.isCollisionBullet()) this.counter++;
 
       if (this.isCollisionRocket()) this.gameOver();
     }, 1000 / this.fps);
@@ -107,7 +107,7 @@ const myGame = {
     this.background.draw();
     this.player.draw();
     this.aliens.forEach(alien => alien.draw());
-    this.score.update();
+    this.score.draw();
   },
 
   moveAll: function() {
