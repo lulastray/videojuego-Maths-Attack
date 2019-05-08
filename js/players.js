@@ -19,6 +19,8 @@ class Player {
 
     this.bullets = [];
 
+
+
     this.setListeners();
   }
 
@@ -36,11 +38,15 @@ class Player {
   }
 
   setListeners() {
-    document.onkeydown = event => {
+    document.onkeydown = (event => {
       if (event.keyCode === this.keys.LEFT_KEY) this.moveLeft();
       else if (event.keyCode === this.keys.RIGHT_KEY) this.moveRight();
-      else if (event.keyCode === this.keys.SHOOT_KEY) this.shoot();
-    };
+      else if (event.keyCode === this.keys.SHOOT_KEY) {
+        this.shoot();
+        this.soundShoot()
+      };
+
+    })
   }
 
   shoot() {
@@ -53,5 +59,12 @@ class Player {
 
   moveRight() {
     if (this.x + this.width < this.canvasW) this.x += this.vel;
+  }
+
+  soundShoot() {
+    this.effectShoot = new Audio()
+    this.effectShoot.src = "sonidos/disparo-nave.wav"
+    this.effectShoot.play()
+
   }
 }

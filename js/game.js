@@ -25,9 +25,37 @@ const myGame = {
     "imagenes/008-alien.svg",
     "imagenes/009-alien-1.svg"
   ],
-  counter: 0,
 
-  init: function(id) {
+  imgNumbers: [
+    "imagenes/numeros/1.svg",
+    "imagenes/numeros/2.svg",
+    "imagenes/numeros/3.svg",
+    "imagenes/numeros/4.svg",
+    "imagenes/numeros/5.svg",
+    "imagenes/numeros/6.svg",
+    "imagenes/numeros/7.svg",
+    "imagenes/numeros/8.svg",
+    "imagenes/numeros/9.svg",
+    "imagenes/numeros/10.svg",
+    "imagenes/numeros/11.svg",
+    "imagenes/numeros/12.svg",
+    "imagenes/numeros/13.svg",
+    "imagenes/numeros/14.svg",
+    "imagenes/numeros/15.svg",
+    "imagenes/numeros/16.svg",
+    "imagenes/numeros/17.svg",
+    "imagenes/numeros/18.svg",
+    "imagenes/numeros/19.svg",
+    "imagenes/numeros/20.svg"
+  ],
+
+  //soundUrl: "sonidos/musica-fondo.mp3",
+
+  counter: {
+    score: 0
+  },
+
+  init: function (id) {
     this.canvasDom = document.getElementById(id);
     this.ctx = this.canvasDom.getContext("2d");
     this.setDimensions();
@@ -37,18 +65,20 @@ const myGame = {
     this.player.setListeners();
   },
 
-  setDimensions: function() {
+  setDimensions: function () {
     this.canvasDom.setAttribute("height", window.innerHeight);
     this.canvasDom.setAttribute("width", "600");
   },
 
-  startGame: function() {
+  startGame: function () {
     this.resetGame();
 
     this.interval = setInterval(() => {
       this.clear();
       this.moveAll();
       this.drawAll();
+
+      //if (this.mainTune.ended) this.mainTune.play();
 
       this.framesCounter++;
 
@@ -60,19 +90,26 @@ const myGame = {
         this.generateAlien();
       }
 
-      this.clearAlien();
+      if (this.framesCounter % 70 == 0) {
+        this.generateNumber();
+      }
 
-      if (this.isCollisionBullet()) this.counter++;
+      this.clearAlien();
+      this.clearNumber();
+
+      this.isCollisionBullet();
+      this.isCollisionNumber();
 
       if (this.isCollisionRocket()) this.gameOver();
     }, 1000 / this.fps);
+
   },
 
-  stop: function() {
+  stop: function () {
     clearInterval(this.interval);
   },
 
-  gameOver: function() {
+  gameOver: function () {
     this.stop();
 
     if (confirm("GAME OVER")) {
@@ -81,12 +118,15 @@ const myGame = {
     }
   },
 
-  clear: function() {
+  clear: function () {
     this.ctx.clearRect(0, 0, this.canvasW, this.canvasH);
   },
 
-  resetGame: function() {
+  resetGame: function () {
     this.framesCounter = 0;
+    /*     this.mainTune = new Audio();
+        this.mainTune.src = this.soundUrl;
+        this.mainTune.play(); */
     this.background = new Background(this.ctx, this.canvasW, this.canvasH);
     this.player = new Player(
       this.ctx,
@@ -99,41 +139,72 @@ const myGame = {
     this.aliens = [
       new Aliens(this.ctx, this.canvasW, this.canvasH, this.getRandomAlien())
     ];
+    this.numbers = [
+      new Numbers(
+        this.ctx,
+        this.canvasW,
+        this.canvasH,
+        this.getRandomImgNumber()
+      )
+    ];
 
     this.score = new Score(this.ctx, this.counter, this.canvasW, this.canvasH);
+
   },
 
-  drawAll: function() {
+  drawAll: function () {
     this.background.draw();
     this.player.draw();
     this.aliens.forEach(alien => alien.draw());
     this.score.draw();
+    this.numbers.forEach(number => number.draw());
+
   },
 
-  moveAll: function() {
+  moveAll: function () {
     this.background.move();
     this.aliens.forEach(alien => alien.move());
     /*     this.aliens.forEach(alien => alien.circularMove());
      */
+    this.numbers.forEach(number => number.move());
   },
 
-  getRandomAlien: function() {
+  getRandomAlien: function () {
     return this.imgAliens[Math.floor(Math.random() * this.imgAliens.length)];
   },
 
-  generateAlien: function() {
+  generateAlien: function () {
     this.aliens.push(
       new Aliens(this.ctx, this.canvasW, this.canvasH, this.getRandomAlien())
     );
   },
 
-  clearAlien: function() {
+  clearAlien: function () {
     this.aliens = this.aliens.filter(alien => {
       return alien.y <= this.canvasH;
     });
   },
 
-  isCollisionBullet: function() {
+  getRandomImgNumber: function () {
+    return this.imgNumbers[Math.floor(Math.random() * this.imgNumbers.length)];
+  },
+
+  generateNumber: function () {
+    this.numbers.push(
+      new Numbers(
+        this.ctx,
+        this.canvasW,
+        this.canvasH,
+        this.getRandomImgNumber()
+      )
+    );
+  },
+
+  clearNumber: function () {
+    this.numbers = this.numbers.filter(number => number.y <= this.canvasH);
+  },
+
+  isCollisionBullet: function () {
     return this.aliens.some((alien, idx) => {
       return this.player.bullets.some((bullet, index) => {
         if (
@@ -142,12 +213,14 @@ const myGame = {
           bullet.y <= alien.y + alien.height
         ) {
           this.aliens.splice(idx, 1);
+          this.counter.score++;
           this.player.bullets.splice(index, 1);
+          this.aliens.forEach(alien => alien.isDead())
         }
       });
     });
   },
-  isCollisionRocket: function() {
+  isCollisionRocket: function () {
     return this.aliens.some(alien => {
       return (
         alien.y + alien.height >= this.player.y &&
@@ -155,5 +228,32 @@ const myGame = {
         alien.x <= this.player.x + this.player.width
       );
     });
+  },
+
+  isCollisionNumber: function () {
+    return this.numbers.some((number, idx) => {
+      return this.player.bullets.some((bullet, index) => {
+        if (
+          bullet.x + bullet.r >= number.x &&
+          bullet.x < number.x + number.width &&
+          bullet.y <= number.y + number.height
+        ) {
+          console.log(this.numbers[idx].img.src);
+          if (this.numbers[idx].img.src.includes("7"))
+            console.log("Respuesta correcta");
+          this.numbers.splice(idx, 1);
+          this.counter.score++;
+          this.player.bullets.splice(index, 1);
+        }
+      });
+    });
+  },
+
+
+
+  isOperationRight: function () {
+    console.log(this.numbers[idx].img.src);
+    if (this.numbers[idx].img.src.includes("7"))
+      console.log("Respuesta correcta");
   }
 };

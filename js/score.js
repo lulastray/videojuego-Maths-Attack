@@ -9,6 +9,6 @@ class Score {
   draw() {
     this.ctx.font = "30px sans-serif";
     this.ctx.fillStyle = "white";
-    this.ctx.fillText(this.counter, 200, 50);
+    this.ctx.fillText(this.counter.score, 200, 50);
   }
 }

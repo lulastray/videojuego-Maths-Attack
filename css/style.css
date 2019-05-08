@@ -1,16 +1,33 @@
 .background-1 {
-  background-image: url("../imagenes/fondo-espacio-planetas.jpg");
+  background: url("../imagenes/fondo-espacio-prueba.png")no-repeat center / cover;
+  
 }
 
 body button {
-  background-color: rgb(250, 128, 114);
+  background-color: #ED6D46;
   border-radius: 10px;
   padding: 10px 20px;
   color: rgb(255, 255, 240);
 }
 
+.flex-container{
+  display: flex;
+  width: 100%;
+}
+
+#operation {
+  border: 2px solid rgb(247, 226, 207);
+  border-radius: 20px;
+  background-color: #ED6D46;
+  font-family: "Roboto";
+  font-size : 4em;
+  margin: 300px 50px;
+  padding: 20px;
+  color: white;
+}
+
 .background-2 {
-  background-color: rgb(228, 210, 189);
+  background-image: url("../imagenes/fondo-juego-canvas.svg")
 }
 
 .logo {
@@ -22,7 +39,7 @@ body button {
 
 #play {
   /* display: inline-block; */
-  background-color: rgb(250, 128, 114);
+  background-color: #ED6D46;
   border-radius: 10px;
   padding: 10px 20px;
 
@@ -33,7 +50,7 @@ body button {
 .display {
   display: none;
 }
-.canvas {
+/* .canvas {
   display: block;
   margin: 0 auto;
-}
+} */
