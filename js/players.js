@@ -7,10 +7,10 @@ class Player {
     this.keys = keys;
 
     this.x = this.canvasW / 2 - 50;
-    this.y = this.canvasH - 130;
+    this.y = this.canvasH - 100;
 
-    this.width = 100;
-    this.height = 130;
+    this.width = 70;
+    this.height = 100;
 
     this.vel = 17;
 

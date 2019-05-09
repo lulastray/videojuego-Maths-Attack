@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 299 243" style="enable-background:new 0 0 299 243;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;fill:#F2E7C2;}
+	.st1{display:none;fill:none;}
+	.st2{display:none;fill:#E99D2C;}
+	.st3{display:none;}
+	.st4{display:inline;fill:#F2E6C4;}
+	.st5{font-family:'moonhouse';}
+	.st6{font-size:50px;}
+	.st7{fill:#606060;}
+	.st8{fill:#58AF92;}
+	.st9{fill:#7AC4A6;}
+	.st10{fill:#F2E6C4;}
+	.st11{display:inline;fill:#F09C21;}
+	.st12{display:inline;fill:#84C39F;}
+</style>
+<rect y="-200.3" class="st0" width="841.9" height="600.3"/>
+<image style="display:none;overflow:visible;" width="563" height="479" xlink:href="8D72FC590092D495.jpg"  transform="matrix(0.4501 0 0 0.4501 577 -193.6826)">
+</image>
+<rect x="302" y="247" class="st1" width="617.9" height="489.3"/>
+<polygon class="st2" points="119,131.8 229.5,177.1 340,225 119,307 "/>
+<g class="st3">
+	<text transform="matrix(1 0 0 1 127 236)" class="st4 st5 st6">PLAY</text>
+</g>
+<text transform="matrix(1 0 0 1 32.0146 -108.125)" class="st5" style="fill:#0C0C3A; font-size:46.0654px;">Maths</text>
+<text transform="matrix(1 0 0 1 32.0146 -73.835)" class="st5" style="fill:#DB3A2E; font-size:46.0654px;">Attacks</text>
+<g>
+	<polygon class="st7" points="9,52 66,5 254.6,46.6 293,118.2 266.6,217 144.9,236 15.2,210.1 	"/>
+	<polygon class="st8" points="20.6,73.5 57,37 222,52 280,153.3 20.6,184.3 	"/>
+	<polygon class="st9" points="25.9,77.3 105,53 276,72.6 265.4,200 226.7,212.3 77,207 23.7,187.9 	"/>
+	<polygon class="st10" points="35.7,87.1 127,72.6 246.8,87.1 254,193 52.6,184.1 	"/>
+</g>
+<g class="st3">
+	<path class="st11" d="M803.2,223c0,46-37.3,5.4-83.3,5.4s-83.3,40.6-83.3-5.4s37.3-161.2,83.3-161.2S803.2,176.9,803.2,223z"/>
+	<path class="st4" d="M791.5,222.5c0,39.8-32.2,72-72,72s-72-32.2-72-72s32.2-149.9,72-149.9S791.5,182.8,791.5,222.5z"/>
+	<path class="st12" d="M785.6,223c0,36.4-29.5,65.9-65.9,65.9c-36.4,0-65.9-29.5-65.9-65.9s29.5-143.8,65.9-143.8
+		C756.1,79.2,785.6,186.6,785.6,223z"/>
+</g>
+</svg>

@@ -23,21 +23,25 @@
   <script type="text/javascript" src="js/script.js"></script>
 </head>
 
-<body class="background-1">
-  <div class="logo-start" id="logo-start">
+<body>
+
+  <div class="logo-start background-1" id="logo-start">
     <h1 class="titulo">
-      <img src="imagenes/logo-Maths-Attack.svg" alt="titulo Maths Attack" class="logo" />
+      <!-- <img src="imagenes/logo-Maths-Attack.svg" alt="titulo Maths Attack" class="logo" />-->
     </h1>
-    <button id="play" class="button">Play Now</button>
+    <img src="imagenes/menu/play.svg" alt="play button" id="play">
   </div>
 
   <main class="flex-container">
     <section>
+      <img src="imagenes/menu/logo-peque-mathsAttacks.svg" alt="logo Maths Attacks" class="logo-peque">
       <p id="operation"></p>
+      <img src="imagenes/menu/imagen-cohete-menu-canvas.svg" alt="rocket" class="img-rocket">
     </section>
     <canvas id="myCanvas" class="canvas"></canvas>
     <section id="scores">
       <article class="score"></article>
+      <img src="imagenes/menu/huevito-score.svg" alt="imagen para la puntuacion" class="huevito score">
       <article class="nivel"></article>
     </section>
   </main>

@@ -15,8 +15,8 @@ const myGame = {
     RIGHT_KEY: 39,
     SHOOT_KEY: 38
   },
-  imgPlayer1: "imagenes/cohete naranja-blanco-recto.svg",
-
+  imgPlayer1: "imagenes/rocket-final.svg",
+  result: 0,
   imgAliens: [
     "imagenes/alien(1).svg",
     "imagenes/alien.svg",
@@ -49,10 +49,15 @@ const myGame = {
     "imagenes/numeros/20.svg"
   ],
 
+
   //soundUrl: "sonidos/musica-fondo.mp3",
 
   counter: {
     score: 0
+  },
+  soundEffects: {
+    right: undefined,
+    wrong: undefined,
   },
 
   init: function (id) {
@@ -127,6 +132,7 @@ const myGame = {
     /*     this.mainTune = new Audio();
         this.mainTune.src = this.soundUrl;
         this.mainTune.play(); */
+    this.generateOperation()
     this.background = new Background(this.ctx, this.canvasW, this.canvasH);
     this.player = new Player(
       this.ctx,
@@ -238,11 +244,10 @@ const myGame = {
           bullet.x < number.x + number.width &&
           bullet.y <= number.y + number.height
         ) {
-          console.log(this.numbers[idx].img.src);
-          if (this.numbers[idx].img.src.includes("7"))
-            console.log("Respuesta correcta");
+          this.isOperationRight(idx)
+
           this.numbers.splice(idx, 1);
-          this.counter.score++;
+
           this.player.bullets.splice(index, 1);
         }
       });
@@ -251,9 +256,42 @@ const myGame = {
 
 
 
-  isOperationRight: function () {
-    console.log(this.numbers[idx].img.src);
-    if (this.numbers[idx].img.src.includes("7"))
-      console.log("Respuesta correcta");
+  generateOperation: function () {//no entiendo como llega al DOM
+    let a = Math.floor(Math.random() * (10 - 1) + 1)
+    let b = Math.floor(Math.random() * (10 - 1) + 1)
+    this.result = a + b
+    document.querySelector("#operation").innerText = `${a} + ${b} =`
+  },
+
+  isOperationRight: function (idx) {
+    if (this.numbers[idx].img.src.includes(this.result)) {
+      console.log("Es correcto")
+      this.rightSoundeffect()
+      this.counter.score += 5
+      this.generateOperation()
+    } else {
+      this.wrongSoundEffect()
+      console.log("incorrecto")
+      this.counter.score -= 3
+    }
+    // PUNTOS LO QUE SEA
+
+  },
+  rightSoundeffect: function () {
+    this.effectRight = new Audio()
+    this.effectRight.src = "sonidos/right-sound2.mp3"
+    this.effectRight.play()
+
+  },
+
+  wrongSoundEffect: function () {
+    this.effectWrong = new Audio()
+    this.effectWrong.src = "sonidos/wrong-sound2.wav"
+    this.effectWrong.play()
+  },
+
+  changeLevel: function () {
+
   }
+
 };
