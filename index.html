@@ -33,21 +33,35 @@
   </div>
 
   <main class="flex-container">
-    <section>
+
+    <section id="left">
       <img src="imagenes/menu/logo-peque-mathsAttacks.svg" alt="logo Maths Attacks" class="logo-peque">
-      <p id="operation"></p>
-      <img src="imagenes/menu/imagen-cohete-menu-canvas.svg" alt="rocket" class="img-rocket">
+
+      <div class="operation-container">
+        <p id="operation"></p>
+      </div>
+
+      <div class="instructions">
+        <img src="imagenes/menu/instrucciones.svg" alt="instructions image">
+      </div>
     </section>
+
     <canvas id="myCanvas" class="canvas"></canvas>
-    <section id="scores">
-      <article class="score"></article>
-      <img src="imagenes/menu/huevito-score.svg" alt="imagen para la puntuacion" class="huevito score">
-      <article class="nivel"></article>
-    </section>
-  </main>
 
+    <section id="right">
+      <img src="imagenes/menu/rocket-canvas-pequeño.svg" alt="rocket" class="rocket">
 
+      <article class="score">
+        <p id="score"></p>
+        <p id="score-text">Score</p>
+      </article>
+      <!--  <img src="imagenes/menu/huevito-score.svg" alt="imagen para la puntuacion" class="huevito-score">-->
+      <article class="level">
+        <!--  <img src="imagenes/menu/level.svg" alt="level image"> -->
+        <p id="level"></p>
 
-</body>
-
-</html>
+      </article>
+      <div class="lost">
+        <img src="imagenes/menu/you-lost.svg" alt="lost image" id="you-lost">
+        <img src="imagenes/menu/play-lost.svg" alt="image to play again" id="play-lost" </div> </section> </main>
+          </body> </html>

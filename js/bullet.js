@@ -1,7 +1,7 @@
 class Bullet {
   constructor(ctx, x, y) {
     this.ctx = ctx;
-    this.x = x + 50;
+    this.x = x + 35;
     this.y = y;
     this.r = 5;
     this.velX = 1;

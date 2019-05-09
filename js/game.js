@@ -59,6 +59,9 @@ const myGame = {
     right: undefined,
     wrong: undefined,
   },
+  counterOperations: 0,
+
+  level: 0,
 
   init: function (id) {
     this.canvasDom = document.getElementById(id);
@@ -102,10 +105,13 @@ const myGame = {
       this.clearAlien();
       this.clearNumber();
 
+      this.scoreHtml()
+
       this.isCollisionBullet();
       this.isCollisionNumber();
 
       if (this.isCollisionRocket()) this.gameOver();
+      if (this.level == 1) this.youWin()
     }, 1000 / this.fps);
 
   },
@@ -114,13 +120,23 @@ const myGame = {
     clearInterval(this.interval);
   },
 
+  youWin: function () {
+
+    this.stop()
+    document.getElementById("you-win").style.display = "block";
+    document.getElementById(play - win).style.display = "block";
+
+  },
+
   gameOver: function () {
     this.stop();
+    document.getElementById("you-lost").style.position = "absolute"
+    document.getElementById("you-lost").style.display = "block"
+    document.getElementById("play-lost").style.diplay = "block"
+    /*  if (confirm("GAME OVER")) { */
+    //this.resetGame();
+    //this.startGame();
 
-    if (confirm("GAME OVER")) {
-      this.resetGame();
-      this.startGame();
-    }
   },
 
   clear: function () {
@@ -256,11 +272,16 @@ const myGame = {
 
 
 
-  generateOperation: function () {//no entiendo como llega al DOM
+  generateOperation: function () {
     let a = Math.floor(Math.random() * (10 - 1) + 1)
     let b = Math.floor(Math.random() * (10 - 1) + 1)
-    this.result = a + b
-    document.querySelector("#operation").innerText = `${a} + ${b} =`
+    if (this.counterOperations >= 1) {
+      this.result = a - b
+      document.querySelector("#operation").innerText = `${a} - ${b} =`
+    } else {
+      this.result = a + b
+      document.querySelector("#operation").innerText = `${a} + ${b} =`
+    }
   },
 
   isOperationRight: function (idx) {
@@ -268,7 +289,9 @@ const myGame = {
       console.log("Es correcto")
       this.rightSoundeffect()
       this.counter.score += 5
+      this.counterOperations++
       this.generateOperation()
+      console.log(this.counterOperations)
     } else {
       this.wrongSoundEffect()
       console.log("incorrecto")
@@ -291,7 +314,15 @@ const myGame = {
   },
 
   changeLevel: function () {
+    if (counterOperations % 5 === 0) {
+      this.level++
+      document.querySelector("level").innerText = this.level
+    }
 
+  },
+
+  scoreHtml: function () {
+    document.querySelector("#score").innerText = this.counter.score
   }
 
 };

@@ -6,7 +6,7 @@ class Player {
     this.url = url;
     this.keys = keys;
 
-    this.x = this.canvasW / 2 - 50;
+    this.x = this.canvasW / 2 - 35;
     this.y = this.canvasH - 100;
 
     this.width = 70;
