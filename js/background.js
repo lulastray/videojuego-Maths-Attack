@@ -4,12 +4,12 @@ class Background {
     this.canvasW = canvasW;
     this.canvasH = canvasH;
     this.img = new Image();
-    this.img.src = "imagenes/fondo-espacio-negro.svg";
+    this.img.src = "imagenes/menu/fondo-space-lu.svg";
 
     this.x = 0;
     this.y = 0;
 
-    this.velY = 3;
+    this.velY = 1;
   }
 
   draw() {

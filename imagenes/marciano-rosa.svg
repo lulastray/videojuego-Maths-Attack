@@ -1,2 +1,30 @@
-<?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512"><g id="flat"><path d="M52,23a20,20,0,0,0-40,0V53a4,4,0,0,0,8,0V48a4,4,0,0,0,8,0v9a4,4,0,0,0,8,0V44a4,4,0,0,0,8,0V55a4,4,0,0,0,8,0Z" style="fill:#f98c96"/><rect x="19" y="44" width="2" height="2" style="fill:#e4544f"/><rect x="43" y="40" width="2" height="2" style="fill:#e4544f"/><path d="M32,37A12,12,0,0,0,44,25H20A12,12,0,0,0,32,37Z" style="fill:#fff"/><path d="M32,33a8,8,0,0,0,8-8H24A8,8,0,0,0,32,33Z" style="fill:#ffd782"/><path d="M32,29a4,4,0,0,0,4-4H28A4,4,0,0,0,32,29Z" style="fill:#e4544f"/><path d="M32,13h0A12,12,0,0,1,44,25v0a0,0,0,0,1,0,0H20a0,0,0,0,1,0,0v0A12,12,0,0,1,32,13Z" style="fill:#394d5c"/><path d="M26,22H24c0-4.746,5.233-6,8-6l0,2C31.757,18,26,18.064,26,22Z" style="fill:#98a5a6"/><path d="M44.132,14.5C40.476,8.1,32.083,8,32,8V6c.392,0,9.629.085,13.868,7.5Z" style="fill:#e4544f"/><circle cx="7" cy="10" r="3" style="fill:#f98c96"/><circle cx="57" cy="7" r="4" style="fill:#f98c96"/><circle cx="59" cy="37" r="3" style="fill:#f98c96"/><circle cx="5" cy="27" r="2" style="fill:#f98c96"/></g></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 320 464" style="enable-background:new 0 0 320 464;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#F98C96;}
+	.st1{fill:#E4544F;}
+	.st2{fill:#FFFFFF;}
+	.st3{fill:#FFD782;}
+	.st4{fill:#394D5C;}
+	.st5{fill:#98A5A6;}
+</style>
+<g id="flat">
+	<path class="st0" d="M320,160C320,71.6,248.4,0,160,0S0,71.6,0,160v240c0,17.7,14.3,32,32,32s32-14.3,32-32v-40
+		c0,17.7,14.3,32,32,32s32-14.3,32-32v72c0,17.7,14.3,32,32,32s32-14.3,32-32V328c0,17.7,14.3,32,32,32s32-14.3,32-32v88
+		c0,17.7,14.3,32,32,32s32-14.3,32-32V160z"/>
+	<rect x="56" y="328" class="st1" width="16" height="16"/>
+	<rect x="248" y="296" class="st1" width="16" height="16"/>
+	<path class="st2" d="M160,272c53,0,96-43,96-96H64C64,229,107,272,160,272z"/>
+	<path class="st3" d="M160,240c35.3,0,64-28.7,64-64H96C96,211.3,124.7,240,160,240z"/>
+	<path class="st1" d="M160,208c17.7,0,32-14.3,32-32h-64C128,193.7,142.3,208,160,208z"/>
+	<path class="st4" d="M160,80L160,80c53,0,96,43,96,96l0,0l0,0H64l0,0l0,0C64,123,107,80,160,80z"/>
+	<path class="st5" d="M112,152H96c0-38,41.9-48,64-48v16C158.1,120,112,120.5,112,152z"/>
+	<path class="st1" d="M257.1,92c-29.2-51.2-96.4-52-97.1-52V24c3.1,0,77,0.7,110.9,60L257.1,92z"/>
+	<circle class="st0" cx="-40" cy="56" r="24"/>
+	<circle class="st0" cx="360" cy="32" r="32"/>
+	<circle class="st0" cx="376" cy="272" r="24"/>
+	<circle class="st0" cx="-56" cy="192" r="16"/>
+</g>
+</svg>

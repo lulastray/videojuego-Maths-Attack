@@ -21,8 +21,8 @@ class Aliens {
     this.velArray = [2, -2];
 
     this.velX = this.velArray[Math.floor(Math.random() * 2)];
-    this.velY = 1;
-    this.gravity = 0.02;
+    this.velY = 0.2;
+    this.gravity = 0.01;
 
     this.bullet = [];
   }

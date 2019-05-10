@@ -12,7 +12,7 @@ class Player {
     this.width = 70;
     this.height = 100;
 
-    this.vel = 17;
+    this.vel = 20;
 
     this.img = new Image();
     this.img.src = url;

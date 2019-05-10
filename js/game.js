@@ -94,11 +94,11 @@ const myGame = {
         this.framesCounter = 0;
       }
 
-      if (this.framesCounter % 80 == 0) {
+      if (this.framesCounter % 90 == 0) {
         this.generateAlien();
       }
 
-      if (this.framesCounter % 70 == 0) {
+      if (this.framesCounter % 80 == 0) {
         this.generateNumber();
       }
 
@@ -106,13 +106,21 @@ const myGame = {
       this.clearNumber();
 
       this.scoreHtml()
+      document.querySelector("#level").innerText = this.level
 
       this.isCollisionBullet();
       this.isCollisionNumber();
 
+
+      if (this.level === 2) {
+        this.youWin()
+      }
       if (this.isCollisionRocket()) this.gameOver();
-      if (this.level == 1) this.youWin()
+
+
     }, 1000 / this.fps);
+
+
 
   },
 
@@ -123,19 +131,17 @@ const myGame = {
   youWin: function () {
 
     this.stop()
+    document.getElementById("play-win").style.display = "block";
     document.getElementById("you-win").style.display = "block";
-    document.getElementById(play - win).style.display = "block";
 
   },
 
   gameOver: function () {
     this.stop();
-    document.getElementById("you-lost").style.position = "absolute"
+
+    document.getElementById("play-lost").style.display = "block"
     document.getElementById("you-lost").style.display = "block"
-    document.getElementById("play-lost").style.diplay = "block"
-    /*  if (confirm("GAME OVER")) { */
-    //this.resetGame();
-    //this.startGame();
+
 
   },
 
@@ -170,15 +176,15 @@ const myGame = {
       )
     ];
 
-    this.score = new Score(this.ctx, this.counter, this.canvasW, this.canvasH);
-
+    this.counter.score = 0
+    this.level = 0
   },
 
   drawAll: function () {
     this.background.draw();
     this.player.draw();
     this.aliens.forEach(alien => alien.draw());
-    this.score.draw();
+    //this.score.draw();
     this.numbers.forEach(number => number.draw());
 
   },
@@ -275,9 +281,14 @@ const myGame = {
   generateOperation: function () {
     let a = Math.floor(Math.random() * (10 - 1) + 1)
     let b = Math.floor(Math.random() * (10 - 1) + 1)
-    if (this.counterOperations >= 1) {
-      this.result = a - b
-      document.querySelector("#operation").innerText = `${a} - ${b} =`
+    if (this.level % 2 !== 0) {
+      if (b > a) {
+        this.result = b - a
+        document.querySelector("#operation").innerText = `${b} - ${a} =`
+      } else {
+        this.result = a - b
+        document.querySelector("#operation").innerText = `${a} - ${b} =`
+      }
     } else {
       this.result = a + b
       document.querySelector("#operation").innerText = `${a} + ${b} =`
@@ -290,12 +301,13 @@ const myGame = {
       this.rightSoundeffect()
       this.counter.score += 5
       this.counterOperations++
+      this.changeLevel()
       this.generateOperation()
       console.log(this.counterOperations)
     } else {
       this.wrongSoundEffect()
       console.log("incorrecto")
-      this.counter.score -= 3
+      this.counter.score--
     }
     // PUNTOS LO QUE SEA
 
@@ -314,9 +326,9 @@ const myGame = {
   },
 
   changeLevel: function () {
-    if (counterOperations % 5 === 0) {
+    if (this.counterOperations == 1) {
       this.level++
-      document.querySelector("level").innerText = this.level
+      console.log('entro en changeLevel', this.level)
     }
 
   },
