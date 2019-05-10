@@ -94,11 +94,11 @@ const myGame = {
         this.framesCounter = 0;
       }
 
-      if (this.framesCounter % 90 == 0) {
+      if (this.framesCounter % 140 == 0) {
         this.generateAlien();
       }
 
-      if (this.framesCounter % 80 == 0) {
+      if (this.framesCounter % 100 == 0) {
         this.generateNumber();
       }
 
@@ -301,7 +301,8 @@ const myGame = {
       this.rightSoundeffect()
       this.counter.score += 5
       this.counterOperations++
-      this.changeLevel()
+      this.level++
+      // this.changeLevel()
       this.generateOperation()
       console.log(this.counterOperations)
     } else {
@@ -325,13 +326,12 @@ const myGame = {
     this.effectWrong.play()
   },
 
-  changeLevel: function () {
-    if (this.counterOperations == 1) {
-      this.level++
-      console.log('entro en changeLevel', this.level)
-    }
+  // changeLevel: function () {
+  //   if (this.counterOperations == 1) {
+  //     console.log('entro en changeLevel', this.level)
+  //   }
 
-  },
+  // },
 
   scoreHtml: function () {
     document.querySelector("#score").innerText = this.counter.score

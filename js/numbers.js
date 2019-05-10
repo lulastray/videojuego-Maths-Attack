@@ -18,7 +18,7 @@ class Numbers {
     this.velArray = [2, -2];
 
     this.velX = this.velArray[Math.floor(Math.random() * 2)];
-    this.velY = .2;
+    this.velY = .1;
 
     this.gravity = 0.01;
   }

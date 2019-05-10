@@ -8,8 +8,14 @@ window.onload = function () {
   document.getElementById("play-lost").onclick = (() => {
     myGame.startGame()
     document.getElementById("play-lost").style.display = "none"
-    document.getElementById("play-win").style.display = "none"
     document.getElementById("you-lost").style.display = "none"
+  })
+
+
+  document.getElementById("play-win").onclick = (() => {
+    myGame.startGame()
+    document.getElementById("play-win").style.display = "none"
+    document.getElementById("you-win").style.display = "none"
   })
 }
 
